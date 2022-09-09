@@ -9,7 +9,6 @@
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import axios from "axios";
 import HeaderComponent from "./components/HeaderComponent.vue";
 import MainComponent from "./components/MainComponent.vue";
 
@@ -21,28 +20,14 @@ export default {
   },
   data() {
     return {
-      movies: [],
-      api_key: "829611189233488d6170049588ee7380",
-      query: "ritorno",
-      base_uri: "https://api.themoviedb.org/3",
+      
     };
   },
   methods: {
-    fetchMovies() {
-      axios
-        .get(
-          "https://api.themoviedb.org/3/search/movie?api_key=829611189233488d6170049588ee7380&query=ritorno"
-        )
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log("Errore!", err);
-        });
-    },
+    
   },
   beforeMount() {
-    this.fetchMovies();
+    
   },
 };
 </script>

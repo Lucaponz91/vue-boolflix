@@ -5,7 +5,7 @@
         </div>
         <div class="search_container">
             <input type="text" name="search_box" id="search" placeholder="Cerca un film">
-            <button type="submit">Cerca</button>
+            <button type="submit">Cerca nel database</button>
 
         </div>
     </div>

@@ -1,17 +1,16 @@
 <template>
   <div class="header_container">
-    <div class="logo"></div>
+    <div class="logo"><span>BOOLFLIX</span></div>
     <div class="search_container">
-      <input
+      <input @keyup.enter="filterResults(query)" class="form-control rounded"
         v-model="query"
         type="text"
         name="search_box"
+        aria-label="Search" aria-describedby="search-addon"
         id="search"
         placeholder="Cerca un film"
       />
-      <button @click="filterResults(query)" type="submit">
-        Cerca nel database
-      </button>
+      
       {{ query }}
     </div>
   </div>
@@ -49,4 +48,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .header_container{
+        padding: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+        .logo{
+            color: darkred;
+            font-size: 3em;
+        }
+    }
 </style>

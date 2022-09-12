@@ -13,6 +13,8 @@ library.add(faUserSecret, fas)
 
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+// BEBAS NEUE FONT
+import "@fontsource/bebas-neue"
 
 // Import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'

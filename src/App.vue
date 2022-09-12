@@ -2,8 +2,13 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <HeaderComponent @search="fetchMovies" :movies="movies" />
-    <MainComponent  :movies="movies" />
+    <HeaderComponent
+      @movies="fetchMovies"
+      @series="fetchSeries"
+      :movieList="movieList"
+      :serieList="serieList"
+    />
+    <MainComponent :movieList="movieList" :serieList="serieList" />
   </div>
 </template>
 
@@ -13,7 +18,6 @@ import HeaderComponent from "./components/HeaderComponent.vue";
 import MainComponent from "./components/MainComponent.vue";
 import axios from "axios";
 
-
 export default {
   name: "App",
   components: {
@@ -22,22 +26,39 @@ export default {
   },
   data() {
     return {
-      movies: [],
+      movieList: [],
+      serieList: [],
       api_key: "829611189233488d6170049588ee7380",
       base_uri: "https://api.themoviedb.org/3",
-
     };
   },
   methods: {
     fetchMovies(query) {
+      if (query.trim() === "") return;
       axios
         .get(
           `${this.base_uri}/search/movie?api_key=${this.api_key}&query=${query}`
         )
         .then((res) => {
           console.log(res);
-          this.movies = res.data.results;
-          console.log(this.movies);
+          this.movieList = res.data.results;
+          console.log(this.movieList);
+          // console.log(state.query)
+        })
+        .catch((err) => {
+          console.log("Errore!", err);
+        });
+    },
+    fetchSeries(query) {
+      if (query.trim() === "") return;
+      axios
+        .get(
+          `${this.base_uri}/search/tv?api_key=${this.api_key}&query=${query}`
+        )
+        .then((res) => {
+          console.log(res);
+          this.serieList = res.data.results;
+          console.log(this.serieList);
           // console.log(state.query)
         })
         .catch((err) => {

@@ -17,14 +17,15 @@
           alt="flag"
         />
         <p v-else>{{ movie.original_language }}</p>
-        <font-awesome-icon icon="fa-solid fa-star" />
         <p>{{ movie.vote_average }}</p>
-        <div class="voto" >
-          Voto: <i
-              v-for="i in getRoundVote(movie.vote_average)"
-              :key="i"
-              class="fa-solid fa-star">
-            </i>
+        <div class="voto">
+          Voto:
+          <font-awesome-icon
+            icon="fa-solid fa-star"
+            v-for="i in getRoundVote(movie.vote_average)"
+            :key="i"
+            class="fa-solid fa-star"
+          />
         </div>
       </li>
     </ul>
@@ -104,7 +105,7 @@ export default {
 ul {
   list-style: none;
 }
-i{
+i {
   width: 15px;
 }
 </style>

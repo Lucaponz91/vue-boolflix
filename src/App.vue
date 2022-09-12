@@ -8,7 +8,7 @@
       :movieList="movieList"
       :serieList="serieList"
     />
-    <MainComponent :movieList="movieList" :serieList="serieList" />
+    <MainComponent :movieList="movieList" :serieList="serieList" :langList="langList" />
   </div>
 </template>
 
@@ -26,6 +26,7 @@ export default {
   },
   data() {
     return {
+      langList: ["it", "en", "ja", "de", "fr", "es"],
       movieList: [],
       serieList: [],
       api_key: "829611189233488d6170049588ee7380",

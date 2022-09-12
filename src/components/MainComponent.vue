@@ -4,25 +4,45 @@
     <ul>
       <!-- {{query}} -->
       <li v-for="movie in movieList" :key="movie.id">
+        <img
+          :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`"
+          alt=""
+        />
         <h3>{{ movie.title }}</h3>
         <p>{{ movie.original_title }}</p>
 
         <img
           v-if="langList.includes(movie.original_language)"
-          
           :src="`/flags/${movie.original_language}.png`"
           alt="flag"
         />
-        <p v-else >{{ movie.original_language }}</p>
+        <p v-else>{{ movie.original_language }}</p>
+        <font-awesome-icon icon="fa-solid fa-star" />
         <p>{{ movie.vote_average }}</p>
+        <div class="voto" >
+          Voto: <i
+              v-for="i in getRoundVote(movie.vote_average)"
+              :key="i"
+              class="fa-solid fa-star">
+            </i>
+        </div>
       </li>
     </ul>
     <h2>Series</h2>
     <ul>
       <li v-for="serie in serieList" :key="serie.id">
+        <img
+          :src="`https://image.tmdb.org/t/p/w342${serie.poster_path}`"
+          alt=""
+        />
         <h3>{{ serie.name }}</h3>
         <p>{{ serie.original_name }}</p>
-        <p>{{ serie.original_language }}</p>
+        <img
+          v-if="langList.includes(serie.original_language)"
+          :src="`/flags/${serie.original_language}.png`"
+          alt="flag"
+        />
+        <p v-else>{{ serie.original_language }}</p>
         <p>{{ serie.vote_average }}</p>
       </li>
     </ul>
@@ -69,6 +89,10 @@ export default {
         return true;
       }
     },
+    getRoundVote(vote) {
+      console.log(Math.round(vote / 2));
+      return Math.round(vote / 2);
+    },
   },
   beforeMount() {
     // this.fetchMovies();
@@ -79,5 +103,8 @@ export default {
 <style lang="scss" scoped>
 ul {
   list-style: none;
+}
+i{
+  width: 15px;
 }
 </style>

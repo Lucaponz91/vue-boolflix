@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     filterResults(query) {
-      console.log("invia");
+      // console.log("invia");
       this.$emit("movies", query);
       this.$emit("series", query);
       // this.query = "";

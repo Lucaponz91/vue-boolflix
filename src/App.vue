@@ -40,7 +40,7 @@ export default {
         .then((res) => {
           console.log(res);
           this.movieList = res.data.results;
-          console.log(this.movieList);
+          // console.log(this.movieList);
           // console.log(state.query)
         })
         .catch((err) => {
@@ -56,16 +56,21 @@ export default {
         .then((res) => {
           console.log(res);
           this.serieList = res.data.results;
-          console.log(this.serieList);
+          // console.log(this.serieList);
           // console.log(state.query)
         })
         .catch((err) => {
           console.log("Errore!", err);
         });
     },
+    fetchTheatres(){
+      axios
+        .get(`${this.base_uri}/movie/now_playing?api_key=${this.api_key}&language=en-US`)
+    }
   },
   beforeMount() {},
 };
+
 </script>
 
 <style lang="scss">

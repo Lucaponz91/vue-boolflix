@@ -161,16 +161,16 @@ export default {
     // }
   },
   methods: {
-    urlExists(url) {
-      const http = new XMLHttpRequest();
-      http.open("HEAD", url, false);
-      http.send();
-      if (http.status == "404") {
-        return false;
-      } else {
-        return true;
-      }
-    },
+    // urlExists(url) {
+    //   const http = new XMLHttpRequest();
+    //   http.open("HEAD", url, false);
+    //   http.send();
+    //   if (http.status == "404") {
+    //     return false;
+    //   } else {
+    //     return true;
+    //   }
+    // },
     getRoundVote(vote) {
       console.log(Math.round(vote / 2));
       return Math.round(vote / 2);

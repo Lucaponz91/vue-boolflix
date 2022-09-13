@@ -21,11 +21,15 @@
         <div class="voto">
           Voto:
           <font-awesome-icon
+          v-for="i in getRoundVote(movie.vote_average)"
+          :key="i"
             icon="fa-solid fa-star"
-            v-for="i in getRoundVote(movie.vote_average)"
-            :key="i"
             class="fa-solid fa-star"
           />
+          <font-awesome-icon
+          v-for="n in (5 - getRoundVote(movie.vote_average))"
+          :key="n" 
+          icon="fa-regular fa-star" />
         </div>
       </li>
     </ul>
@@ -45,6 +49,19 @@
         />
         <p v-else>{{ serie.original_language }}</p>
         <p>{{ serie.vote_average }}</p>
+        <div class="voto">
+          Voto:
+          <font-awesome-icon
+          v-for="i in getRoundVote(serie.vote_average)"
+          :key="i"
+            icon="fa-solid fa-star"
+            class="fa-solid fa-star"
+          />
+          <font-awesome-icon
+          v-for="n in (5 - getRoundVote(serie.vote_average))"
+          :key="n" 
+          icon="fa-regular fa-star" />
+        </div>
       </li>
     </ul>
   </div>

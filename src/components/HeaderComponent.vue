@@ -29,7 +29,7 @@ export default {
         console.log('invia')
       this.$emit("movies", query);
       this.$emit("series", query);
-      this.query = "";
+      // this.query = "";
     },
   },
 };

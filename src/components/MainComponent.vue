@@ -1,70 +1,5 @@
 <template>
   <div>
-    <!-- <h2>Movies</h2>
-    <ul>
-      <li v-for="movie in movieList" :key="movie.id">
-        <img
-          :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`"
-          alt=""
-        />
-        <h3>{{ movie.title }}</h3>
-        <p>{{ movie.original_title }}</p>
-
-        <img
-          v-if="langList.includes(movie.original_language)"
-          :src="`/flags/${movie.original_language}.png`"
-          alt="flag"
-        />
-        <p v-else>{{ movie.original_language }}</p>
-        <p>{{ movie.vote_average }}</p>
-        <div class="voto">
-          Voto:
-          <font-awesome-icon
-            v-for="i in getRoundVote(movie.vote_average)"
-            :key="i"
-            icon="fa-solid fa-star"
-            class="fa-solid fa-star"
-          />
-          <font-awesome-icon
-            v-for="n in 5 - getRoundVote(movie.vote_average)"
-            :key="n"
-            icon="fa-regular fa-star"
-          />
-        </div>
-      </li>
-    </ul>
-    <h2>Series</h2>
-    <ul>
-      <li v-for="serie in serieList" :key="serie.id">
-        <img
-          :src="`https://image.tmdb.org/t/p/w342${serie.poster_path}`"
-          alt=""
-        />
-        <h3>{{ serie.name }}</h3>
-        <p>{{ serie.original_name }}</p>
-        <img
-          v-if="langList.includes(serie.original_language)"
-          :src="`/flags/${serie.original_language}.png`"
-          alt="flag"
-        />
-        <p v-else>{{ serie.original_language }}</p>
-        <p>{{ serie.vote_average }}</p>
-        <div class="voto">
-          Voto:
-          <font-awesome-icon
-            v-for="i in getRoundVote(serie.vote_average)"
-            :key="i"
-            icon="fa-solid fa-star"
-            class="fa-solid fa-star"
-          />
-          <font-awesome-icon
-            v-for="n in 5 - getRoundVote(serie.vote_average)"
-            :key="n"
-            icon="fa-regular fa-star"
-          />
-        </div>
-      </li>
-    </ul> -->
     <!-- card -->
     <section id="team" class="pb-5">
       <div class="container">
@@ -115,7 +50,7 @@
                         />
                         <font-awesome-icon
                           v-for="n in 5 - getRoundVote(movie.vote_average)"
-                          :key="n"
+                          :key="n + (getRoundVote(movie.vote_average))"
                           icon="fa-regular fa-star"
                         />
                       </div>
@@ -168,7 +103,7 @@
                         :src="`/flags/${serie.original_language}.png`"
                         alt="flag"
                       />
-                      <p v-else>Paese: {{ movie.original_language }}</p>
+                      <p v-else>Paese: {{ serie.original_language }}</p>
                       <div class="voto">
                         Voto:
                         <font-awesome-icon
@@ -179,7 +114,7 @@
                         />
                         <font-awesome-icon
                           v-for="n in 5 - getRoundVote(serie.vote_average)"
-                          :key="n"
+                          :key="n + (getRoundVote(serie.vote_average))"
                           icon="fa-regular fa-star"
                         />
                       </div>
@@ -377,7 +312,7 @@ section .section-title {
 
 .frontside .card .card-body img {
   width: 342px;
-  height: 342px;
+  height: 420px;
   border-radius: 0%;
 }
 .overview {

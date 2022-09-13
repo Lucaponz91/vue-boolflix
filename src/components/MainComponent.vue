@@ -1,8 +1,7 @@
 <template>
   <div>
-    <h2>Movies</h2>
+    <!-- <h2>Movies</h2>
     <ul>
-      <!-- {{query}} -->
       <li v-for="movie in movieList" :key="movie.id">
         <img
           :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`"
@@ -21,15 +20,16 @@
         <div class="voto">
           Voto:
           <font-awesome-icon
-          v-for="i in getRoundVote(movie.vote_average)"
-          :key="i"
+            v-for="i in getRoundVote(movie.vote_average)"
+            :key="i"
             icon="fa-solid fa-star"
             class="fa-solid fa-star"
           />
           <font-awesome-icon
-          v-for="n in (5 - getRoundVote(movie.vote_average))"
-          :key="n" 
-          icon="fa-regular fa-star" />
+            v-for="n in 5 - getRoundVote(movie.vote_average)"
+            :key="n"
+            icon="fa-regular fa-star"
+          />
         </div>
       </li>
     </ul>
@@ -52,18 +52,153 @@
         <div class="voto">
           Voto:
           <font-awesome-icon
-          v-for="i in getRoundVote(serie.vote_average)"
-          :key="i"
+            v-for="i in getRoundVote(serie.vote_average)"
+            :key="i"
             icon="fa-solid fa-star"
             class="fa-solid fa-star"
           />
           <font-awesome-icon
-          v-for="n in (5 - getRoundVote(serie.vote_average))"
-          :key="n" 
-          icon="fa-regular fa-star" />
+            v-for="n in 5 - getRoundVote(serie.vote_average)"
+            :key="n"
+            icon="fa-regular fa-star"
+          />
         </div>
       </li>
-    </ul>
+    </ul> -->
+    <!-- card -->
+    <section id="team" class="pb-5">
+      <div class="container">
+        <h5 class="section-title h1">MOVIES</h5>
+        <div class="row">
+          <!-- Team member -->
+          <div
+            v-for="movie in movieList"
+            :key="movie.id"
+            class="col-xs-12 col-sm-6 col-md-4"
+          >
+            <div
+              class="image-flip"
+              ontouchstart="this.classList.toggle('hover');"
+            >
+              <div class="mainflip">
+                <div class="frontside">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <p>
+                        <img
+                          class="img-fluid"
+                          :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`"
+                          alt="Nessuna Locandina"
+                        />
+                      </p>
+                      <h4 class="card-title">{{ movie.title }}</h4>
+                      <!-- <p class="card-text">This is basic card with image on top, title, description and button.</p> -->
+                      <!-- <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="backside">
+                  <div class="card back_card">
+                    <div class="card-body text-center mt-4">
+                      <h4 class="card-title">{{ movie.original_title }}</h4>
+                      <p class="card-text overview">{{ movie.overview }}</p>
+                      <img
+                        v-if="langList.includes(movie.original_language)"
+                        :src="`/flags/${movie.original_language}.png`"
+                        alt="flag"
+                      />
+                      <p v-else>Paese: {{ movie.original_language }}</p>
+                      <div class="voto">
+                        Voto:
+                        <font-awesome-icon
+                          v-for="i in getRoundVote(movie.vote_average)"
+                          :key="i"
+                          icon="fa-solid fa-star"
+                          class="fa-solid fa-star"
+                        />
+                        <font-awesome-icon
+                          v-for="n in 5 - getRoundVote(movie.vote_average)"
+                          :key="n"
+                          icon="fa-regular fa-star"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- card end -->
+    <!-- Card series -->
+    <section id="team" class="pb-5">
+      <div class="container">
+        <h5 class="section-title h1">SERIES</h5>
+        <div class="row row_cards">
+          <!-- Team member -->
+          <div
+            v-for="serie in serieList"
+            :key="serie.id"
+            class="col-xs-12 col-sm-6 col-md-4"
+          >
+            <div
+              class="image-flip"
+              ontouchstart="this.classList.toggle('hover');"
+            >
+              <div class="mainflip">
+                <div class="frontside">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <p>
+                        <img
+                          class="img-fluid"
+                          :src="`https://image.tmdb.org/t/p/w342${serie.poster_path}`"
+                          alt="Nessuna Locandina"
+                        />
+                      </p>
+                      <h4 class="card-title">{{ serie.name }}</h4>
+                      <!-- <p class="card-text">This is basic card with image on top, title, description and button.</p> -->
+                      <!-- <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="backside">
+                  <div class="card back_card">
+                    <div class="card-body text-center mt-4">
+                      <h4 class="card-title">{{ serie.original_title }}</h4>
+                      <p class="card-text overview">{{ serie.overview }}</p>
+                      <img
+                        v-if="langList.includes(serie.original_language)"
+                        :src="`/flags/${serie.original_language}.png`"
+                        alt="flag"
+                      />
+                      <p v-else>Paese: {{ movie.original_language }}</p>
+                      <div class="voto">
+                        Voto:
+                        <font-awesome-icon
+                          v-for="i in getRoundVote(serie.vote_average)"
+                          :key="i"
+                          icon="fa-solid fa-star"
+                          class="fa-solid fa-star"
+                        />
+                        <font-awesome-icon
+                          v-for="n in 5 - getRoundVote(serie.vote_average)"
+                          :key="n"
+                          icon="fa-regular fa-star"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- card series end -->
   </div>
 </template>
 
@@ -125,4 +260,137 @@ ul {
 i {
   width: 15px;
 }
+// card
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #108d6f;
+  border-color: #108d6f;
+  box-shadow: none;
+  outline: none;
+}
+
+.btn-primary {
+  color: salmon;
+  background-color: #007b5e;
+  border-color: #007b5e;
+}
+
+section {
+  padding: 60px 0;
+}
+
+section .section-title {
+  text-align: center;
+  color: #007b5e;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+#team .card {
+  border: none;
+  background: black;
+}
+
+.image-flip:hover .backside,
+.image-flip.hover .backside {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  border-radius: 0.25rem;
+}
+
+.image-flip:hover .frontside,
+.image-flip.hover .frontside {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.mainflip {
+  -webkit-transition: 1s;
+  -webkit-transform-style: preserve-3d;
+  -ms-transition: 1s;
+  -moz-transition: 1s;
+  -moz-transform: perspective(1000px);
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transition: 1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.frontside {
+  position: relative;
+  -webkit-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+.backside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: grey;
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -o-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+  -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+  box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+}
+.back_card {
+  background-color: black;
+}
+
+.frontside,
+.backside {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: 1s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: 1s;
+  -moz-transform-style: preserve-3d;
+  -o-transition: 1s;
+  -o-transform-style: preserve-3d;
+  -ms-transition: 1s;
+  -ms-transform-style: preserve-3d;
+  transition: 1s;
+  transform-style: preserve-3d;
+}
+
+.frontside .card,
+.backside .card {
+  min-height: 312px;
+}
+
+.backside .card a {
+  font-size: 18px;
+  color: #007b5e !important;
+}
+
+.frontside .card .card-title,
+.backside .card .card-title {
+  color: white !important;
+}
+
+.frontside .card .card-body img {
+  width: 342px;
+  height: 342px;
+  border-radius: 0%;
+}
+.overview {
+  color: grey;
+}
+.row_cards {
+  row-gap: 90px;
+}
+// card end
 </style>

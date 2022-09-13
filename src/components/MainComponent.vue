@@ -70,7 +70,6 @@
       <div class="container">
         <h5 class="section-title h1">MOVIES</h5>
         <div class="row">
-          <!-- Team member -->
           <div
             v-for="movie in movieList"
             :key="movie.id"
@@ -92,8 +91,6 @@
                         />
                       </p>
                       <h4 class="card-title">{{ movie.title }}</h4>
-                      <!-- <p class="card-text">This is basic card with image on top, title, description and button.</p> -->
-                      <!-- <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a> -->
                     </div>
                   </div>
                 </div>
@@ -137,7 +134,6 @@
       <div class="container">
         <h5 class="section-title h1">SERIES</h5>
         <div class="row row_cards">
-          <!-- Team member -->
           <div
             v-for="serie in serieList"
             :key="serie.id"
@@ -159,8 +155,6 @@
                         />
                       </p>
                       <h4 class="card-title">{{ serie.name }}</h4>
-                      <!-- <p class="card-text">This is basic card with image on top, title, description and button.</p> -->
-                      <!-- <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a> -->
                     </div>
                   </div>
                 </div>

@@ -172,7 +172,7 @@ export default {
     //   }
     // },
     getRoundVote(vote) {
-      console.log(Math.round(vote / 2));
+      // console.log(Math.round(vote / 2));
       return Math.round(vote / 2);
     },
   },

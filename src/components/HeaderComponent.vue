@@ -25,11 +25,17 @@ export default {
   data() {
     return {
       query: "",
+      // theatre: ''
     };
+  },
+  props: {
+    theatre: Boolean
+
   },
   methods: {
     filterResults(query) {
       // console.log("invia");
+      // this.theatre = true
       this.$emit("movies", query);
       this.$emit("series", query);
       // this.query = "";

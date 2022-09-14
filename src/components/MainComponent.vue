@@ -3,7 +3,8 @@
     <!-- card -->
     <section id="team" class="pb-5">
       <div class="container">
-        <h5 class="section-title h1">MOVIES</h5>
+        <h5 class="section-title h1" v-if="!theatre" >MOVIES</h5>
+        <h5 class="section-title h1" v-if="theatre" >ADESSO AL CINEMA</h5>
         <div class="row">
           <div
             v-for="movie in movieList"
@@ -67,7 +68,7 @@
     <!-- Card series -->
     <section id="team" class="pb-5">
       <div class="container">
-        <h5 class="section-title h1">SERIES</h5>
+        <h5 v-if="!theatre" class="section-title h1">SERIES</h5>
         <div class="row row_cards">
           <div
             v-for="serie in serieList"
@@ -139,6 +140,7 @@ export default {
     movieList: Array,
     serieList: Array,
     langList: Array,
+    theatre: Boolean
   },
   data() {
     return {

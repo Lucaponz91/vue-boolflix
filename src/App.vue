@@ -77,7 +77,7 @@ export default {
     fetchTheatres() {
       axios
         .get(
-          `${this.base_uri}/movie/now_playing?api_key=${this.api_key}&language=en-US`
+          `${this.base_uri}/movie/now_playing?api_key=${this.api_key}&language=it-IT`
         )
         .then((res) => {
           // console.log(res);
